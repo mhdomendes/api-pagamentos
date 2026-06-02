@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+
+            $table->string('external_id')->unique();
+
+            $table->decimal('amount', 10, 2);
+
+            $table->enum('status', [
+                'pending',
+                'processing',
+                'approved',
+                'failed'
+            ]);
+
             $table->timestamps();
         });
     }
