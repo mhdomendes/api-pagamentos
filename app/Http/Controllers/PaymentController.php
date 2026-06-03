@@ -30,7 +30,7 @@ class PaymentController extends Controller
             'status' => 'pending'
         ]);
 
-        ProcessPaymentJob::dispatch($payment->id);
+        ProcessPaymentJob::dispatch($payment);
 
         return response()->json($payment, 201);
     }
