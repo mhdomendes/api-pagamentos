@@ -27,7 +27,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->string('idempotency_key')->unique();
+            $table->string('idempotency_key')->unique();            
         });
     }
 

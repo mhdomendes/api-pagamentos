@@ -14,6 +14,12 @@ class PaymentController extends Controller
     {
         $idempotencyKey = $request->header('Idempotency-Key');
 
+        if (!$idempotencyKey) {
+            return response()->json([
+                'message' => 'Idempotency-Key header is required'
+            ], 422);
+        }
+
         $payment = Payment::where(
             'idempotency_key',
             $idempotencyKey
